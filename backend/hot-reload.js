@@ -7,7 +7,8 @@ module.exports = function cacheReloader() {
     // eslint-disable-next-line global-require
     const chokidar = require('chokidar')
     const watcher = chokidar.watch([
-      './routes/**'
+      './routes/**',
+      './services/**'
     ])
 
     watcher.on('ready', () => {
