@@ -1,7 +1,7 @@
 'use strict'
 
 const ENV = process.env.ENVIRONMENT || 'dev'
-const PORT = process.env.PORT || 3030
+const PORT = process.env.PORT || 3031
 
 const dotenv = require('dotenv').config({ path: `./.env.${ENV}` }) // eslint-disable-line no-unused-vars
 const express = require('express')
