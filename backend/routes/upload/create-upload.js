@@ -11,9 +11,7 @@ module.exports = function createOrganizationFile(req, res) {
     })
   }
 
-  return create(req.file).then(() => (
-    res.status(200).send({
-      id: req.params.uuid
-    })
+  return create(req.file).then((fileRecord) => (
+    res.status(200).send(fileRecord)
   ))
 }
