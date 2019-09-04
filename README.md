@@ -12,11 +12,12 @@
 - [Getting Started](#getting-started)
   - [Dev Environment Setup](#dev-environment-setup)
 - [Commands](#commands)
+- [Advanced Setup](#advanced-setup)
 
 ### Project
 
-- [frontend](./endpoints/api/readme.md) - _React App_
-- [backend](./db/README.md) -  _Serverless REST APIs_
+- [frontend](./frontend/README.md) - _React App_
+- [backend](./backend/README.md) -  _Express REST APIs_
 
 # Getting Started
 
@@ -33,8 +34,11 @@ cd sbox
 
 **Node install**
 
+Must at least have node version **10.15 or above**! **Ignore this step if you already have node installed at the correct version**
+
 ```bash
-nvm install # This should install the version designated in .nvmrc
+# This should install the version designated in .nvmrc
+nvm install
 ```
 
 **Install dependencies**
@@ -42,7 +46,37 @@ nvm install # This should install the version designated in .nvmrc
 ```bash
 npm run setup
 ```
+**Running code**
 
+### Setup
+```bash
+# This will start both the backend apis as well as the frontend react application
+npm start
+```
+
+## Commands
+
+- [setup](#setup)
+- [start](#start)
+- [test](#testing)
+
+### Setup
+_runs npm install for every package (frontend, backend)_
+
+```bash
+npm run setup
+```
+
+### Start
+
+_runs npm start for every package (frontend, backend)_
+
+```bash
+npm run setup
+```
+
+
+## Advanced Setup
 **Setting up aws credentials (DEVOPS only)**
 
 Create the directory `~/.aws` and file `credentials`
@@ -64,28 +98,3 @@ aws_secret_access_key=<SECRET>
 aws_access_key_id=<ID>
 aws_secret_access_key=<SECRET>
 ```
-
-**Running code**
-### Setup
-
-// TODO
-
-_This should fill out as we progress_
-Currently, refer to each package how to run code.
-
-- [frontend](./endpoints/api/readme.md) - _React App_
-- [backend](./db/README.md) - _Serverless REST APIs_
-
-## Commands
-
-- [setup](#setup)
-- [test](#testing)
-- [clean](#clean)
-
-### Setup
-
-// TODO
-
-### Testing
-
-// TODO
