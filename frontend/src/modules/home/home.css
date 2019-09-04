@@ -1,0 +1,16 @@
+.home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.logo {
+  max-width: 100%;
+  height: auto;
+}
+
+.upload-button {
+  display: flex;
+  align-items: center;
+}
