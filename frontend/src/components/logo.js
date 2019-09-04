@@ -31,7 +31,7 @@ export default class Logo extends PureComponent {
         <g id='logo'>
           <g
             id='title'
-            ariaLabel='SBOX'
+            aria-label='SBOX'
             style={baseStyle}
           >
             <path

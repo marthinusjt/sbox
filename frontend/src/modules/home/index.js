@@ -45,13 +45,11 @@ export default class Home extends PureComponent {
           accept='*'
           style={{ display: 'none' }}
           id='outlined-button-file'
-          single
           type='file'
           onChange={this.uploadFile}
         />
         <label htmlFor='outlined-button-file'>
           <Button
-            type='file'
             className='upload-button'
             variant='outlined'
             size='large'

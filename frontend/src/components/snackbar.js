@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
-import CheckCircleIcon from '@material-ui/icons/CheckCircle'
+import Check from '@material-ui/icons/Check'
 import InfoIcon from '@material-ui/icons/Info'
 import CloseIcon from '@material-ui/icons/Close'
 
@@ -12,13 +12,13 @@ import SnackbarContent from '@material-ui/core/SnackbarContent'
 import { makeStyles } from '@material-ui/core/styles'
 
 const variantIcon = {
-  success: CheckCircleIcon,
+  success: Check,
   info: InfoIcon
 }
 
 const useStyles = makeStyles(theme => ({
   success: {
-    backgroundColor: green['A700']
+    backgroundColor: green['500']
   },
   info: {
     backgroundColor: theme.palette.primary.main

@@ -15,7 +15,6 @@ function delay(ms, v) {
 // This doesn't do anything besides fake a wait time
 module.exports.create = function create(file) {
   const millisecondDelay = Math.floor(Math.random() * 1000 + 1)
-  console.log(file)
 
   const mockFileDatabaseRecord = {
     id: uuidv4(),
