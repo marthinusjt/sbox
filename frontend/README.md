@@ -7,9 +7,14 @@
 </h1>
 
 ---
+<p align="center">
+  <img width="300" alt="Home Page Screenshot" src="https://user-images.githubusercontent.com/5419727/64229063-b8b8cf80-ceb6-11e9-819e-65e7332990fe.png">
+</p>
+
+
 
 - [Getting Started](#getting-started)
-- [Structure](#project)
+- [Structure](#project-structure)
 - [Advanced Commands](#advanced-commands)
 - [More Resources](#more-resources)
 
