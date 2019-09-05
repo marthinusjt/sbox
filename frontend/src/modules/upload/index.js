@@ -6,17 +6,38 @@ import Button from '../../components/button'
 
 import { createFile } from '../../api/file'
 
+const MAX_FILE_SIZE = 10 // MegaBytes
+
+function isFileTooLarge(fileSize) {
+  return fileSize > (MAX_FILE_SIZE  * 1024 * 1024)
+}
+
 export default function Upload() {
   const [isSnackbarOpen, setIsSnackbarOpen] = useState(false)
-  const [fileName, setFileName] = useState()
+  const [snackbarVariant, setSnackbarVariant] = useState('success')
+  const [snackbarMessage, setSnackbarMessage] = useState('')
 
   function uploadFile(e) {
     const file = e.target.files[0]
+    if (isFileTooLarge(file.size)) {
+      const fileName = file.name ? file.name : 'File'
+
+      setSnackbarVariant('error')
+      setIsSnackbarOpen(true)
+      setSnackbarMessage(`
+        ${fileName} (${(file.size / 1024 / 1024).toFixed(2)} MB)
+        exceeds max file size (${MAX_FILE_SIZE} MB)
+      `)
+      return
+    }
+
     createFile(file)
       .then((response) => {
         if (response && response.status === 200) {
+          const fileName = response.data.name ? response.data.name : 'File'
           setIsSnackbarOpen(true)
-          setFileName(response.data.name)
+          setSnackbarVariant('success')
+          setSnackbarMessage(`${fileName} uploaded`)
         }
       })
   }
@@ -27,6 +48,7 @@ export default function Upload() {
     }
 
     setIsSnackbarOpen(false)
+    setSnackbarMessage('')
   }
 
   return (
@@ -57,11 +79,8 @@ export default function Upload() {
         open={isSnackbarOpen}
         autoHideDuration={6000}
         onClose={onSnackbarClose}
-        variant='success'
-        message={`
-          ${fileName ? fileName : 'File'}
-          uploaded
-        `}
+        variant={snackbarVariant}
+        message={snackbarMessage}
       />
     </>
   )

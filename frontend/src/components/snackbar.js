@@ -4,6 +4,7 @@ import clsx from 'clsx'
 import Check from '@material-ui/icons/Check'
 import InfoIcon from '@material-ui/icons/Info'
 import CloseIcon from '@material-ui/icons/Close'
+import ErrorIcon from '@material-ui/icons/Error'
 
 import { green } from '@material-ui/core/colors'
 import IconButton from '@material-ui/core/IconButton'
@@ -13,7 +14,8 @@ import { makeStyles } from '@material-ui/core/styles'
 
 const variantIcon = {
   success: Check,
-  info: InfoIcon
+  info: InfoIcon,
+  error: ErrorIcon
 }
 
 const useStyles = makeStyles(theme => ({
@@ -22,6 +24,9 @@ const useStyles = makeStyles(theme => ({
   },
   info: {
     backgroundColor: theme.palette.primary.main
+  },
+  error: {
+    backgroundColor: theme.palette.error.dark
   },
   icon: {
     fontSize: 20
