@@ -72,7 +72,7 @@ npm run setup
 _runs npm start for every package (frontend, backend)_
 
 ```bash
-npm run setup
+npm run start
 ```
 
 
