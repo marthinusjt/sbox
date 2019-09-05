@@ -19,6 +19,8 @@ export default function Upload() {
 
   function uploadFile(e) {
     const file = e.target.files[0]
+    // Clear target so user can upload the same file again
+    e.target.value = null
     if (isFileTooLarge(file.size)) {
       const fileName = file.name ? file.name : 'File'
 
