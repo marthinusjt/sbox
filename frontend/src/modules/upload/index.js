@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 
+import './upload.css'
 import Snackbar from '../../components/snackbar'
 import Button from '../../components/button'
 
 import { createFile } from '../../api/file'
-
 
 export default function Upload() {
   const [isSnackbarOpen, setIsSnackbarOpen] = useState(false)
