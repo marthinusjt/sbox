@@ -48,7 +48,6 @@ npm run setup
 ```
 **Running code**
 
-### Setup
 ```bash
 # This will start both the backend apis as well as the frontend react application
 npm start
