@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React from 'react'
 import Snackbar from '../../components/snackbar'
 import Button from '../../components/button'
 
@@ -7,37 +7,46 @@ import Logo from '../../components/logo'
 
 import { createFile } from '../../api/file'
 
-export default class Home extends PureComponent {
-  constructor(props) {
-    super(props)
+function Home () {
+  const [isSnackbarOpen, setIsSnackbarOpen] = React.useState(false)
+  const [snackbarMessage, setSnackbarMessage] = React.useState('')
+  const [snackbarVariant, setSnackbarVariant] = React.useState('success')
 
-    this.uploadFile = this.uploadFile.bind(this)
-    this.onSnackbarClose = this.onSnackbarClose.bind(this)
-
-    this.state = {
-      isSnackbarOpen: false
-    }
-  }
-
-  uploadFile(e) {
+  function uploadFile(e) {
     const file = e.target.files[0]
+    e.target.value = null;
+    
+    if (file.size >= 10 * 1024 * 1024) {
+      console.log('aborted')
+      setIsSnackbarOpen(true)
+      setSnackbarMessage('File too large')
+      setSnackbarVariant('error')
+        return
+    }
+
     createFile(file)
       .then((response) => {
         if (response && response.status === 200) {
-          this.setState({ isSnackbarOpen: true, fileName: response.data.name })
+          // Handle no file name
+          const fileName = response.data.fileName
+          ? response.data.fileName
+          : 'File'
+
+          setIsSnackbarOpen(true)
+          setSnackbarMessage(`${fileName} Uploaded`)
+          setSnackbarVariant('success')
         }
       })
   }
 
-  onSnackbarClose(reason) {
+  function onSnackbarClose(reason) {
     if (reason === 'clickaway') {
       return
     }
 
-    this.setState({ isSnackbarOpen: false })
+    setIsSnackbarOpen(false)
   }
 
-  render() {
     return (
       <div className='home'>
         <Logo className='logo' />
@@ -46,7 +55,7 @@ export default class Home extends PureComponent {
           style={{ display: 'none' }}
           id='outlined-button-file'
           type='file'
-          onChange={this.uploadFile}
+          onChange={uploadFile}
         />
         <label htmlFor='outlined-button-file'>
           <Button
@@ -64,18 +73,17 @@ export default class Home extends PureComponent {
             vertical: 'bottom',
             horizontal: 'left'
           }}
-          open={this.state.isSnackbarOpen}
+          open={isSnackbarOpen}
           autoHideDuration={6000}
-          onClose={this.onSnackbarClose}
-          variant='success'
-          message={`
-            ${this.state.fileName ? this.state.fileName : 'File'}
-            uploaded
-          `}
+          onClose={onSnackbarClose}
+          variant={snackbarVariant}
+          message={snackbarMessage}
         />
       </div>
     )
   }
-}
+
 Home.propTypes = {}
 Home.defaultProps = {}
+
+export default Home;
